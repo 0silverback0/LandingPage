@@ -4,13 +4,8 @@ const allSections = document.querySelectorAll('.section');
 const ul = document.querySelector('ul');
 let li = '';
 let addHref = '';
-const list = [];
-let data = '';
-let ha = '';
-let dat = '';
-let aList = '';
 
-//create a tag nested in li tag and set href location
+//create a nested anchor tag in li tag and set href location
 
 allSections.forEach(section => {
 	li = document.createElement('li');
@@ -19,13 +14,6 @@ allSections.forEach(section => {
 	addHref.innerHTML = section.getAttribute('data-section');
 	ul.appendChild(li);
 	li.appendChild(addHref);
-})
-
-//make list from data attribute
-
-allSections.forEach(thing => {
-    data = thing.getAttribute('data-section');
-    list.push(data);
 })
 
 // checks to see if section is in view
@@ -40,7 +28,7 @@ function InView(sect){
 		);
 }
 
-// does something if section is in view
+// makes each section active on scroll
 let sect1 = document.getElementById('sect1');
 let sect2 = document.getElementById('sect2');
 let sect3 = document.getElementById('sect3');
@@ -51,21 +39,21 @@ const lis = document.querySelectorAll('li');
 const firstLi = lis[0];
 const firstA = firstLi.lastElementChild;
 
-//secondA 
+//second A 
 const secondLi = lis[1];
 const secondA = secondLi.lastElementChild;
 
-//thirdA 
+//third A 
 const thirdLi = lis[2];
 const thirdA = thirdLi.lastElementChild;
 
-//fourthA 
+//fourth A 
 const fourthLi = lis[3];
 const fourthA = fourthLi.lastElementChild;
 
-addEventListener('scroll', func);
+addEventListener('scroll', makeActive);
 
-function func(){
+function makeActive(){
 	if (InView(sect1)) {
 	firstA.classList.add('activeSection');
 	} else {
@@ -88,16 +76,17 @@ function func(){
 	}
 	}
 
+
 // sticky header
 
-window.onscroll = function() {myFunction()};
+window.onscroll = function() {Stay()};
 
 var header = document.getElementById("myHeader");
 
 var sticky = header.offsetTop;
 
-function myFunction() {
-  if (window.pageYOffset > sticky) {
+function Stay() {
+  if (window.scrollY > sticky) {
     header.classList.add("sticky");
   } else {
     header.classList.remove("sticky");
